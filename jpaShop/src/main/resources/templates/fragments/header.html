@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- 1. thymeleaf 사용 선언 : xmlns:th="http://www.thymeleaf.org" -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 2. fragment 이름을 header라고 지정. -->
+<head th:fragment="header">
+	<!-- 3. Required meta tags -->
+	<meta http-equiv="Content_Type" content="text/html;" charset="UTF-8">
+	
+	<!-- 4. Bootstrap CSS -->
+	<!-- 정적 리소스 경로 맨 앞에 절대경로(/)를 써줘야 다른 페이지에서도 저 경로로 잘 찾아간다. -->
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/css/jumbotron-narrow.css">
+	
+
+	<title>Hello, World</title>
+	
+</head>

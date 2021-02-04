@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 1. 해당 경로에 있는 header.html에 fragment 속성에다 이름을 header라고 지정한 header를 불러온다. -->
+<head th:replace="/fragments/header :: header">
+	<meta charset="UTF-8">
+	<title>home.html</title>
+</head>
+<body>
+
+<div class="container">
+	<div th:replace="/fragments/bodyHeader :: bodyHeader"></div>
+	
+	<div class="jumbotron">
+		<h1>HELLO SHOP</h1>
+		<p class="lead">회원 기능</p>
+		<p>
+			<a class="btn btn-lg btn-secondary" href="/members/new">회원 가입</a>
+			<a class="btn btn-lg btn-secondary" href="/members">회원 목록</a>
+		</p>
+		<p class="lead">상품 기능</p>
+		<p>
+			<a class="btn btn-lg btn-dark" href="/items/new">상품 등록</a>
+			<a class="btn btn-lg btn-dark" href="/items">상품 목록</a>
+		</p>	
+		<p class="lead">주문 기능</p>
+		<p>
+			<a class="btn btn-lg btn-info" href="/order">상품 주문</a>
+			<a class="btn btn-lg btn-info" href="/orders">주문 내역</a>
+		</p>		
+	</div>
+	
+	<div th:replace="/fragments/footer :: footer"></div>
+</div>
+</body>
+<script src="/assets/js/bootstrap.min.js"></script>
+</html>
+
+<!-- 
+	점보트론은 특별한 콘텐츠 나 정보에 특별한주의를 기울이는 큰 상자를 나타냅니다.
+
+	점보트론은 모서리가 둥근 회색 상자로 표시됩니다. 또한 내부 텍스트의 글꼴 크기를 확대합니다.
+
+	팁 : jumbotron 안에는 다른 Bootstrap 요소 / 클래스를 포함하여 거의 모든 유효한 HTML을 넣을 수 있습니다.
+ -->

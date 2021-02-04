@@ -1,0 +1,74 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.jpaShop'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+// lombok 추가시 생성된다.
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	
+	// web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
+	// mybatis 
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
+	
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	
+	// thymeleaf 1
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
+	// thymeleaf 2 : devtools. -> view 파일 재시작 안하고 새로고침으로도 수정내용 반영하고 싶을 때 추가, jsp랑은 다름.
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	
+	// JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	
+	// JDBC
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	
+	// validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	
+	// 1. jUnit5 외부 라이브러리로 로깅 하는 법(현재 1.6.2 버전이 최신)
+	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.6.2")
+	
+	// 2. 아래 의존성 주석 처리
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		//exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	
+	// 3. jUnit5 버전과 4버전 같이 사용하기 위해 아래 의존성 추가, 참고로 실행 시 junit에 오류가 뜨긴 하는데 실행은 됨, 무시하자
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0' 
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0' 
+	testCompileOnly 'junit:junit:4.12' 
+	testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.1.0'
+
+	// jsp 사용을 위한 dependency - 사용 안할 땐 주석
+//	implementation 'javax.servlet:jstl'
+//	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+}
+
+test {
+	useJUnitPlatform()
+}
